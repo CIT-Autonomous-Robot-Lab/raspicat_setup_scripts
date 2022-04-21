@@ -5,7 +5,7 @@
 # When the switch is on
 if [ $1 = "on" ]; then
   echo start_raspicat_navigation
-  roslaunch raspicat_waypoint_navigation raspicat_raspi_only_navigation.launch &
+  roslaunch raspicat_waypoint_navigation raspicat_raspi_only_navigation.launch rplidar:=true &
   raspicat_navigation_pid=$!
   led_on 1
   sleep 3
