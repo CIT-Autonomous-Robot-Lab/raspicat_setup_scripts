@@ -6,7 +6,7 @@ Requires=
 [Service]
 Type=simple
 User=ubuntu
-ExecStart=/bin/bash -l -c '$(rospack find raspicat_switch_control)/service/raspicat_switch_control.sh'
+ExecStart=/bin/bash -l -c 'source /home/ubuntu/raspicat_ws/devel/setup.bash && $(rospack find raspicat_switch_control)/scripts/raspicat_switch_control.sh'
 Restart=always
 RestartSec=1s
 
