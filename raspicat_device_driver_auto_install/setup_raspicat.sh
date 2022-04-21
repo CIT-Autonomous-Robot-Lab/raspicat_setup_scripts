@@ -4,7 +4,7 @@ set -eu
 
 source ~/.bashrc
 
-sudo /sbin/insmod $(rosstack find raspicat_ros)/RaspberryPiMouse/src/drivers/rtmouse.ko || sudo /bin/bash $(rosstack find raspicat_ros)/RaspberryPiMouse/utils/build_install.bash
+sudo /sbin/insmod $(rosstack find raspicat_ros)/../RaspberryPiMouse/src/drivers/rtmouse.ko || sudo /bin/bash $(rosstack find raspicat_ros)/../RaspberryPiMouse/utils/build_install.bash
 sleep 1
 sudo /bin/chmod 666 /dev/rt*
 sleep 1

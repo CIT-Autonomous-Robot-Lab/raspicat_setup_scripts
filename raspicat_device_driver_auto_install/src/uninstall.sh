@@ -6,4 +6,3 @@ if [ ! ${EUID:-${UID}} = 0 ]; then
 fi
 
 systemctl disable raspicat.service
-systemctl disable rosbase.service
