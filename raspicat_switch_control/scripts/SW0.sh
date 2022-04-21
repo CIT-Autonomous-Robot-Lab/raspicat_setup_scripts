@@ -18,7 +18,7 @@ if [ $1 = "off" ]; then
   kill $raspicat_navigation_pid
   led_off 1
   killall rosmaster
-  exit
+  sudo systemctl restart raspicat_switch_control.service
   sleep 3
 fi
 ########################
