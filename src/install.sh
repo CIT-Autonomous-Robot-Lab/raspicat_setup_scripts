@@ -16,10 +16,8 @@ if [ $NAME == "pi" ]; then
 	echo 'Run "systemctl start raspicat"'
 elif [ $NAME == "ubuntu" ]; then
 	cp ./etc/systemd/system/raspicat.service.ubuntu /etc/systemd/system/raspicat.service
-	cp ./etc/systemd/system/rosbase.service.ubuntu /etc/systemd/system/rosbase.service
 	systemctl daemon-reload
 	systemctl enable raspicat.service
-	systemctl enable rosbase.service
 	echo 'Run "systemctl start raspicat" and "systemctl start rosbase"'
 else
 	echo 'Your $HOME seems to be neither "/home/ubuntu" or "/home/pi".'
