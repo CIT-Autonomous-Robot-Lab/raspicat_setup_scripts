@@ -1,11 +1,11 @@
 [Unit]
 Description=raspimouse driver installer
-After=networking.service
-Requires=networking.service
+After=
+Requires=
 
 [Service]
 User=ubuntu
-ExecStart=/usr/bin/screen -S raspicat-driver -ADm bash -li -c '/home/ubuntu/raspicat_setup_scripts/setup_raspicat.sh'
+ExecStart=/bin/bash -c "source /home/ubuntu/raspicat_ws/devel/setup.bash && $(rospack find raspicat_device_driver_auto_install)/setup_raspicat.sh"
 Type=simple
 Restart=on-failure
 RestartSec=10s
