@@ -1,22 +1,22 @@
 #!/bin/bash -e
 
-# raspicat_navigation
+# waypoint_navigation_start
 
 # When the switch is on
-if [ $1 -eq "on" ]; then
-  echo start_raspicat_navigation
-  roslaunch raspicat_navigation raspicat_bringup_navigation.launch &
-  raspicat_navigation_pid=$!
-  led_on 1
-  sleep 3
+if [ $1 = "on" ] && [ -z "$count" ]; then
+  echo start_waypoint_navigation
+  rostopic pub -1 /way_nav_start std_msgs/Empty
+  led_on 2
+  count=0
+  sleep 2
 fi
 #######################
 
 # When the switch is off
-if [ $1 -eq "off" ]; then
-  echo finish_raspicat_navigation
-  kill $raspicat_navigation_pid
-  led_off 1
-  sleep 3
+if [ $1 = "off" ] || [ -n "$count" ]; then
+  echo restart_waypoint_navigation
+  rostopic pub -1 /way_nav_restart std_msgs/Empty
+  led_off 2
+  sleep 2
 fi
 ########################

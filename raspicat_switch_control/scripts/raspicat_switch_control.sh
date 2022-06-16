@@ -1,5 +1,7 @@
 #!/bin/bash -e
 
+SCRIPT_DIR=$(cd $(dirname $0); pwd)
+
 init () {
   led_off 0
   led_off 1
@@ -42,40 +44,40 @@ check_led_status () {
   led_status=$[led_$1]
 }
 
-SW1 () {
+SW0 () {
   check_switch_status 0
   check_led_status 1
   if [ $switch_status = 0 -a $led_status = 0 ]; then
-    . SW1.sh on
+    . $SCRIPT_DIR/SW0.sh on
   elif [ $switch_status = 0 -a $led_status = 1 ]; then
-    . SW1.sh off
+    . $SCRIPT_DIR/SW0.sh off
+  fi
+}
+
+SW1 () {
+  check_switch_status 1
+  check_led_status 2
+  if [ $switch_status = 0 -a $led_status = 0 ]; then
+    . $SCRIPT_DIR/SW1.sh on
+  elif [ $switch_status = 0 -a $led_status = 1 ]; then
+    . $SCRIPT_DIR/SW1.sh off
   fi
 }
 
 SW2 () {
-  check_switch_status 1
-  check_led_status 2
-  if [ $switch_status = 0 -a $led_status = 0 ]; then
-    . SW2.sh on
-  elif [ $switch_status = 0 -a $led_status = 1 ]; then
-    . SW2.sh off
-  fi
-}
-
-SW3 () {
   check_switch_status 2
   check_led_status 3
   if [ $switch_status = 0 -a $led_status = 0 ]; then
-    . SW3.sh on
+    . $SCRIPT_DIR/SW2.sh on
   elif [ $switch_status = 0 -a $led_status = 1 ]; then
-    . SW3.sh off
+    . $SCRIPT_DIR/SW2.sh off
   fi
 }
 
 raspicat_switch_control () {
+  SW0
   SW1
   SW2
-  SW3
 }
 
 check_ros_process () {
