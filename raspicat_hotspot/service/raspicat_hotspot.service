@@ -6,7 +6,7 @@ Requires=
 [Service]
 Type=simple
 User=root
-ExecStart=/bin/bash -c 'sudo bash $(rospack find raspicat_hotspot)/raspicat_hotspot.sh'
+ExecStart=/bin/bash -c 'source /home/ubuntu/raspicat_ws/devel/setup.bash && sudo bash $(rospack find raspicat_hotspot)/scripts/raspicat_hotspot.sh'
 
 [Install]
 WantedBy=multi-user.target
