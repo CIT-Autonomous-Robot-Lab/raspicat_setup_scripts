@@ -1,18 +1,20 @@
 #!/bin/bash -e
 
-# rosbag_record
+# start rosbag_record
 
 # When the switch is on
 if [ $1 = "on" ]; then
   echo start_rosbag_record
   mkdir -p /mnt/ssd/rosbag/
   rostopic pub -1 /rosbag_record_start std_msgs/Empty
-  rosrun rosbag record -a -o /mnt/ssd/rosbag/navigation &
+  rosrun rosbag record -a -o /mnt/ssd/rosbag/raspicat &
   rosbag_record_pid=$!
   led_on 3
   sleep 3
 fi
 #######################
+
+# stop rosbag_record
 
 # When the switch is off
 if [ $1 = "off" ]; then
