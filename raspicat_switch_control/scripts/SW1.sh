@@ -11,6 +11,8 @@ if [ $1 = "off" ] || [ -n "$count" ]; then
 fi
 ########################
 
+# waypoint_navigation_restart
+
 # When the switch is on
 if [ $1 = "on" ] && [ -z "$count" ]; then
   echo start_waypoint_navigation
