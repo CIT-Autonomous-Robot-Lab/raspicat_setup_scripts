@@ -5,7 +5,7 @@
 # When the switch is off
 if [ $1 = "off" ] || [ -n "$count" ]; then
   echo restart_waypoint_navigation
-  rosservice call --wait /way_nav_restart & 
+  docker exec raspicat-noetic bash -c "source /opt/ros/noetic/setup.bash;rosservice call --wait /way_nav_restart" & 
   led_off 2
   sleep 2
 fi
@@ -16,7 +16,9 @@ fi
 # When the switch is on
 if [ $1 = "on" ] && [ -z "$count" ]; then
   echo start_waypoint_navigation
-  rosservice call --wait /way_nav_start & 
+  docker exec raspicat-noetic bash -c "source /opt/ros/noetic/setup.bash;rostopic pub -1 /way_navigation_start std_msgs/Empty" &
+  sleep 5
+  docker exec raspicat-noetic bash -c "source /opt/ros/noetic/setup.bash;rosservice call --wait /way_nav_start" & 
   led_on 2
   count=0
   sleep 2
