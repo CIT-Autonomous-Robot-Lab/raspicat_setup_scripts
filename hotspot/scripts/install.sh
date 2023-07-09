@@ -16,7 +16,7 @@ cd -
 rm -rf create_ap
 
 sudo cp $(ros2 pkg prefix --share raspicat_setup_scripts)/hotspot/service/raspicat_hotspot.service /etc/systemd/system/raspicat_hotspot.service
-sed -i "s/HOTSPOT_SSID_NAME/$HOTSPOT_SSID/g" /etc/systemd/system/raspicat_hotspot.service
+sudo sed -i "s/HOTSPOT_SSID_NAME/$HOTSPOT_SSID/g" /etc/systemd/system/raspicat_hotspot.service
 sudo systemctl daemon-reload
 sudo systemctl enable raspicat_hotspot.service
 sudo systemctl restart raspicat_hotspot.service
