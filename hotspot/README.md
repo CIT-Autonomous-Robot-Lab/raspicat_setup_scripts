@@ -1,1 +1,0 @@
-# raspicat_hotspot

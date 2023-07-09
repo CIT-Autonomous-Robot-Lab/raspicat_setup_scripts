@@ -1,12 +1,12 @@
 [Unit]
-Description=Raspicat-hotspot
+Description=hotspot
 After=
 Requires=
 
 [Service]
 Type=simple
 User=root
-ExecStart=/bin/bash -c 'source /home/ubuntu/raspicat_ws/devel/setup.bash && sudo bash $(rospack find raspicat_hotspot)/scripts/raspicat_hotspot.sh'
+ExecStart=/bin/bash -c 'source /home/ubuntu/raspicat2/install/setup.bash && sudo bash $(ros2 pkg prefix --share raspicat_setup_scripts)/hotspot/scripts/raspicat_hotspot.sh'
 
 [Install]
 WantedBy=multi-user.target
