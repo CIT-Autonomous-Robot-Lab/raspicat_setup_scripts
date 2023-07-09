@@ -6,7 +6,8 @@ Requires=
 [Service]
 Type=simple
 User=root
-ExecStart=/bin/bash -c 'source /home/ubuntu/raspicat2/install/setup.bash && sudo bash $(ros2 pkg prefix --share raspicat_setup_scripts)/hotspot/scripts/raspicat_hotspot.sh'
+Environment=HOTSPOT_SSID=HOTSPOT_SSID_NAME
+ExecStart=/bin/bash -c 'source /home/ubuntu/raspicat2/install/setup.bash && sudo bash $(ros2 pkg prefix --share raspicat_setup_scripts)/hotspot/scripts/raspicat_hotspot.sh ${HOTSPOT_SSID}'
 
 [Install]
 WantedBy=multi-user.target
