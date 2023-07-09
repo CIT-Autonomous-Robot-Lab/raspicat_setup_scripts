@@ -6,7 +6,7 @@ Requires=
 [Service]
 Type=simple
 User=root
-EnvironmentFile="HOTSPOT_SSID=HOTSPOT_SSID_NAME"
+Environment=HOTSPOT_SSID=HOTSPOT_SSID_NAME
 ExecStart=/bin/bash -c 'source /home/ubuntu/raspicat2/install/setup.bash && sudo bash $(ros2 pkg prefix --share raspicat_setup_scripts)/hotspot/scripts/raspicat_hotspot.sh'
 
 [Install]

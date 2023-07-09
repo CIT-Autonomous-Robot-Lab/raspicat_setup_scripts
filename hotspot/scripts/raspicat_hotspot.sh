@@ -1,7 +1,5 @@
 #!/bin/bash -e
 
-source $HOME/.bashrc
-
 sleep 10
 if [ -n "$(ip a | grep ap0)" ]; then
  iw dev ap0 del
