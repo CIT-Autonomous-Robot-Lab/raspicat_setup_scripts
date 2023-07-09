@@ -7,10 +7,9 @@ set -eu
 
 [ -d /home/ubuntu ] && NAME=ubuntu
 
-sudo apt-get install screen || { sudo apt-get update && sudo apt-get install screen; }
-
 if [ $NAME == "ubuntu" ]; then
-	sudo cp $(rospack find raspicat_device_driver_auto_install)/etc/systemd/system/raspicat.service.ubuntu /etc/systemd/system/raspicat.service
+  sudo apt install -y build-essential screen || { sudo apt update && sudo apt install -y build-essential screen; }
+	sudo cp $(ros2 pkg prefix --share raspicat_setup_scripts)/device_driver_auto_install/etc/systemd/system/raspicat.service.ubuntu /etc/systemd/system/raspicat.service
 	sudo systemctl daemon-reload
 	sudo systemctl enable raspicat.service
 	sudo systemctl restart raspicat.service
