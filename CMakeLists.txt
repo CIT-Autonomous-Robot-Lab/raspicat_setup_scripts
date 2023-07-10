@@ -6,4 +6,5 @@ ament_auto_package(
   INSTALL_TO_SHARE
   device_driver_auto_install
   hotspot
+  time_synchronization
 )
