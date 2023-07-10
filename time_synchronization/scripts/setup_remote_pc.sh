@@ -1,13 +1,7 @@
 #!/bin/bash -e
 
-if [ ! ${EUID:-${UID}} = 0 ]; then
-	echo "You need to run this script as root." && exit 1
-fi
+sudo apt install -y chrony
 
-apt install -y chrony
+sudo bash -c 'echo -e "\nallow 192.168.0/24\nallow 10.42/24" >> /etc/chrony/chrony.conf'
 
-echo "
-allow 192.168.0/24
-allow 10.42/24" >> /etc/chrony/chrony.conf
-
-systemctl restart chrony.service
+sudo systemctl restart chrony.service
