@@ -4,7 +4,7 @@ set -eu
 
 source ~/.bashrc
 
-sudo /sbin/insmod $(rosstack find raspicat_ros)/../RaspberryPiMouse/src/drivers/rtmouse.kuo || sudo /bin/bash $(ros2 pkg prefix --share raspberry_pi_mouse)/utils/build_install.bash; cd $RASPICAT2_WS; colcon build --symlink-install; cd -
+sudo /sbin/modprobe rtmouse || sudo /bin/bash $(ros2 pkg prefix --share raspberry_pi_mouse)/utils/build_install.bash
 sleep 1
 sudo /bin/chmod 666 /dev/rt*
 sleep 1
